@@ -1,0 +1,28 @@
+model:
+    arch: unet
+data:
+    dataset: pascal
+    train_split: train_aug
+    val_split: val
+    img_rows: 'same'
+    img_cols: 'same'
+    path: /private/home/meetshah/datasets/VOC/060817/VOCdevkit/VOC2012/
+    sbd_path: /private/home/meetshah/datasets/VOC/benchmark_RELEASE/
+training:
+    train_iters: 60000
+    batch_size: 8
+    val_interval: 1000
+    n_workers: 16
+    print_interval: 50
+    optimizer:
+        name: 'adam'
+        lr: 1.0e-4
+        weight_decay: 0.000002 #0.0000002 #0.0005 #0.00005usb2 0.000005 usb  #0.000002  #2 #0.02 #0.02 #0.002 #0.000002  0.7867702625800795   # 0.002 0.7544671384651802 0.00002 Mean IoU : 	 0.7741070867102406 #Mean IoU : 	 0.758710058522173
+#        momentum: 0.99
+    loss:
+        name: 'cross_entropy'
+        size_average: False
+    lr_schedule:
+    resume: fcn8s_pascal_best_model.pkl
+
+
